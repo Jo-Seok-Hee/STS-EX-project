@@ -14,7 +14,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 
 @SpringBootApplication
-@MapperScan(basePackages="com.sucky.ex.*")
 
 public class SpringExampleApplication {
 
@@ -22,16 +21,7 @@ public class SpringExampleApplication {
 		SpringApplication.run(SpringExampleApplication.class, args);
 	}
 	
-	 @Bean
-	    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-	        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-	        sessionFactory.setDataSource(dataSource);
-
-	        Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*Mapper.xml");
-	        sessionFactory.setMapperLocations(res);
-
-	        return sessionFactory.getObject();
-	 	}
+	 
 
 
 }
