@@ -11,11 +11,33 @@ import com.sucky.ex.p03.model.model;
 @RestController
 public class reviewController {
 	
+	//스프링한테 객체선언 떠넘기기
 	@Autowired
 	private reviewBO BO;
 	
+	//셀렉트 리뷰
 	@RequestMapping("/p03/ex01")
 	public model ex01(@RequestParam("id")int id) {
 		return BO.getReview(id);
+	}
+	//인써트 리뷰
+	@RequestMapping("/p03/ex02")
+	public String ex02() {
+		
+		// 인써트 내용
+		// `storeId` = 4 , 콤비네이션 , 조서키 , 5.0 , 개맛잇어요
+		//인서트 1번
+//		int count = BO.addReview(4, "콤비네이션 피자", "조서키", 5.0, "짱맛잇어요");
+		
+		//인서트 2번
+		model review = new model();
+		review.setStoreId(4);
+		review.setMenu("페페로니피자");
+		review.setUserName("조서키");
+		review.setPoint(4.0);
+		review.setReview("햄이 짱많아요");
+		
+		int count = BO.addReviewObject(review);
+		return "입력 결과" + count ;
 	}
 }

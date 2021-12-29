@@ -8,7 +8,7 @@
  		
  		SELECT
  			`id`
- 			, `storeId`
+ 			, `storeId` 
  			, `menu`
  			, `userName`
  			, `point`
@@ -20,4 +20,52 @@
  			`id` = #{id}
  	
  	</select> 
+ 	<!--인써트 1번 -->
+ 	<insert id="insertReview" parameterType="map">
+ 		INSERT INTO `new_review`
+ 		(
+ 			`storeId`
+ 			, `menu`
+ 			, `userName`
+ 			, `point`
+ 			, `review`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{storeId}
+ 			, #{menu}
+ 			, #{userName}
+ 			, #{point}
+ 			, #{review}
+ 			, now()
+ 			, now()
+ 		)
+ 	</insert>
+ 	<!-- 인써트 2번 -->
+ 	<insert id="insertReviewObject" parameterType="com.sucky.ex.p03.model.model">
+	 	INSERT INTO `new_review`
+	 		(
+	 			`storeId`
+	 			, `menu`
+	 			, `userName`
+	 			, `point`
+	 			, `review`
+	 			, `createdAt`
+	 			, `updatedAt`
+	 		)
+	 		VALUES
+	 		(
+	 			#{storeId}
+	 			, #{menu}
+	 			, #{userName}
+	 			, #{point}
+	 			, #{review}
+	 			, now()
+	 			, now()
+	 		)
+ 	
+ 	
+ 	</insert>
  </mapper>
