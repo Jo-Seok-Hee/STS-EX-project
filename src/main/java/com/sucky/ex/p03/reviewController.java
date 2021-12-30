@@ -22,22 +22,22 @@ public class reviewController {
 	}
 	//인써트 리뷰
 	@RequestMapping("/p03/ex02")
-	public String ex02() {
+	public String ex02(@RequestParam("storeId")int storeId) {
 		
 		// 인써트 내용
 		// `storeId` = 4 , 콤비네이션 , 조서키 , 5.0 , 개맛잇어요
 		//인서트 1번
-//		int count = BO.addReview(4, "콤비네이션 피자", "조서키", 5.0, "짱맛잇어요");
+		int count = BO.addReview(storeId, "김치피자", "조인성", 0.5, "뒤집어졋어요");
 		
 		//인서트 2번
-		model review = new model();
-		review.setStoreId(4);
-		review.setMenu("페페로니피자");
-		review.setUserName("조서키");
-		review.setPoint(4.0);
-		review.setReview("햄이 짱많아요");
-		
-		int count = BO.addReviewObject(review);
+//		model review = new model();
+//		review.setStoreId(4);
+//		review.setMenu("핫치킨피자");
+//		review.setUserName("엄지");
+//		review.setPoint(4.0);
+//		review.setReview("마싯서요");
+//		
+//		int count = BO.addReviewObject(review);
 		return "입력 결과" + count ;
 	}
 }
