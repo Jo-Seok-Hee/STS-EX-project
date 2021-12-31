@@ -9,20 +9,30 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<title>회원 정보 추가</title>
+<title>userInfo</title>
 </head>
 <body>
-	<div class="container"> 
-		<h1>회원정보 추가</h1>
-		<form method="post" action="/p04/ex01/addUser2">
-			<label>이름 : </label><input type="text" class="form-control" name="name">
-			<label>생년월일 : </label><input type="text" class="form-control" name="yyyymmdd">
-			<label>자기소개</label>
-			<textarea rows="10" cols="5" class="form-control" name="introduce"></textarea>
-			<label>이메일 : </label><input type="text" class="form-control" name="email">
-			
-			<input type="submit" value="추가" class="btn btn-primary">
-		</form>
+	<div class="container">
+		<h1>${info }</h1>
+		<table class="table table-striped">
+			<tr>
+				<td>이름</td>
+				<td>${result.name}</td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td>${result.yyyymmdd }</td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td>${result.email }</td>
+			</tr>
+
+		</table>
+	
 	</div>
+	
+	
+	
 </body>
 </html>
