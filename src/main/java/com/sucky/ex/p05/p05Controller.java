@@ -1,6 +1,7 @@
 package com.sucky.ex.p05;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,9 +54,16 @@ public class p05Controller {
 	}
 	
 	@GetMapping("/p05/ex03")
-	public String ex03() {
+	public String ex03(Model model) {
+		Date date = new Date();
+		
+		model.addAttribute("date", date);
 		return "/p05/ex03";
 	}
 	
+	@GetMapping("/p05/ex04")
+	public String ex04() {
+		return "/p05/ex04";
+	}
 	
 }
