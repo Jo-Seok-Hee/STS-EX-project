@@ -33,7 +33,7 @@
 	
 	<fmt:formatDate value="${date }" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초"></fmt:formatDate>
 	<fmt:formatDate value="${date }" pattern="yyyy/MM/dd hh:mm:ss" var="dateString"></fmt:formatDate>
-	
+	<p>${date }</p>
 	데이트 문자열 변수 : ${dateString }
 	
 	<%-- 문자열을 Date 객체로 변환 --%>

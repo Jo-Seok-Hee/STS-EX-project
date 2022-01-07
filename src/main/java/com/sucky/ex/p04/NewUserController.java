@@ -56,7 +56,8 @@ public class NewUserController {
 	@RequestMapping("/p04/ex01/model")
 	public String view(Model model) {
 		
-		NewUser user = newUserBO.getNewUser(10);
+		NewUser user = new NewUser();
+		user = newUserBO.getNewUser(10);
 		model.addAttribute("result", user);
 		model.addAttribute("info","사용자 정보");
 		
