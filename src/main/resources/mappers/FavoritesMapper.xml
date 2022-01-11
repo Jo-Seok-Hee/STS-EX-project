@@ -20,9 +20,19 @@
 			, now()
 			, now()
 		)
-	
-	
 	</insert> 
+	<select id="selectFavorites" resultType="com.sucky.ex.p06.model.Favorites">
+		SELECT 
+			`id`
+			, `name`
+			, `url`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`favorites`
+	
+	
+	</select>
 
 
 

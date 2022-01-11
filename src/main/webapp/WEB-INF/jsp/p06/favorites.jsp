@@ -26,11 +26,12 @@
 		</form>
 	</div>
 	
+	<%-- 
 	<script>
 	
 		$(document).ready(function(){
 			
-			$("#submitBtn").on("submit",function(){
+			$("#Form").on("submit",function(){
 				let name = $("#nameInput").val();
 				let url = $("#urlInput").val();
 				
@@ -43,11 +44,24 @@
 					alert("주소를 입력하세요");
 					return false;
 				}
-				if( 
+				if( url.includes("https")){
+					alert("https로 시작하는 주소로 접속할 수 없습니다.");
+					return false;
+				}
+			
+				$.ajax({
+					type:"get",
+					url:"/p06/pr01/addFavorites",
+					data:{"name":name, "url":url},
+					success:function(data){
+						alert("입력 성공");
+					},
+					error:function(){
+						alert("에러 발생");
+					}
+				});
 				
-				
-				
-				
+				return false;
 				
 			});
 			
@@ -59,6 +73,7 @@
 	
 	
 	</script>
+	--%>
 	
 </body>
 </html>
