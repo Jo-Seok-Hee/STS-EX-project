@@ -18,7 +18,7 @@
 
 	<h1>회원정보 추가</h1>
 	<form method="post" action="/p06/ex01/addUser" id="joinForm">
-		<label>이름</label><input type="text" name="name" id="nameInput"><br>
+		<label>이름</label><input type="text" name="name" id="nameInput"><button type="button" id="checkBtn">중복확인</button><br>
 		<label>생년월일</label><input type="text" name="yyyyMMdd" id="yyyyMMddInput"><br>
 		<label>자기소개</label><br>
 		<textarea rows="10" cols="50" name="introduce" id="introduceInput"></textarea><br>
@@ -27,6 +27,9 @@
 	</form>
 	<script>
 		$(document).ready(function(){
+			
+			
+			
 			$("#joinForm").on("submit",function(){
 				let name = $("#nameInput").val();
 				let yyyyMMdd = $("#yyyyMMddInput").val();
@@ -68,7 +71,28 @@
 			
 			});
 			
-			
+			$("#checkBtn").on("click",function(){
+				let name = ${"#nameInput"}.val();
+				
+				if(name == ""){
+					alert("이름을 입력해 주세요 ")
+					return ;
+					
+				}
+				
+				$.ajax({
+					type:"get",
+					url:"/p06/ex02/duplicateName",
+					data:{"name":name}
+					success:function(data){
+						if(data.isDuplicate == )
+					},
+					error:function({
+						alert("에러 발생");
+					})
+				})
+				
+			});
 			
 			
 		});

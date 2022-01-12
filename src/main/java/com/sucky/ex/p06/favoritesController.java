@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,16 +29,21 @@ public class favoritesController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/p06/pr01/addFavorites")
+	@PostMapping("/p06/pr01/addFavorites")
 	public String pr01Insert(
 			@RequestParam("name")String name
 			, @RequestParam("url")String url
 			
 			) {
 		
-		favoritesBO.addFavorites(name, url);
+		int count = favoritesBO.addFavorites(name, url);
 		
-		return "http://localhost:8080/p06/pr01/select";
+		if(count == 1) {
+			return "success";
+		} else {
+			return "fail";
+		}
+		
 	}
 	
 	

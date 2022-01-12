@@ -18,39 +18,47 @@
 <body>
 
 	<div class="container">
-		<form method="get" action="/p06/pr01/addFavorites" id="Form">
+		
 			<h1>즐겨 찾기 추가하기</h1>
 			<label>제목</label><br><input type="text" id="nameInput" name="name" class="form-control"><br>
-			<label>주소</label><br><input type="text" id="urlInput" name="url" class="form-control"><br>
-			<button type="submit" class="btn btn-primary" id="submitBtn">추가</button>
-		</form>
+			<label>주소</label><br>
+			<div class="input-group mb-3">
+			    
+			    <input type="text" class="form-control" id="urlInput" name="url" >
+			    <div class="input-group-append">
+			        <button class="btn btn-success" type="button" onclick="checkbox()">중복확인</button>
+			    </div>
+			</div>
+			
+			<button type="button" class="btn btn-primary" id="addFavorites">추가</button>
+		
 	</div>
 	
-	<%-- 
+	
 	<script>
 	
 		$(document).ready(function(){
 			
-			$("#Form").on("submit",function(){
+			$("#addFavorites").on("click",function(){
 				let name = $("#nameInput").val();
 				let url = $("#urlInput").val();
 				
 				
 				if( name == ""){
 					alert("사이트 이름을 입력하세요");
-					return false;
+					return ;
 				}
 				if( url == ""){
 					alert("주소를 입력하세요");
-					return false;
+					return ;
 				}
-				if( url.includes("https")){
-					alert("https로 시작하는 주소로 접속할 수 없습니다.");
-					return false;
+				if( !(url.startsWith("http://") || url.startsWith("https://"))){
+					alert("주소형식이 틀렸습니다.");
+					return ;
 				}
 			
 				$.ajax({
-					type:"get",
+					type:"post",
 					url:"/p06/pr01/addFavorites",
 					data:{"name":name, "url":url},
 					success:function(data){
@@ -61,7 +69,7 @@
 					}
 				});
 				
-				return false;
+				return location.href = "/p06/pr01/select";
 				
 			});
 			
@@ -73,7 +81,7 @@
 	
 	
 	</script>
-	--%>
+	
 	
 </body>
 </html>

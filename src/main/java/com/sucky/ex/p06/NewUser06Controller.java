@@ -1,5 +1,8 @@
 package com.sucky.ex.p06;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,5 +39,19 @@ public class NewUser06Controller {
 		} else {
 			return "fail";
 		}
+	}
+	
+	@GetMapping("/p06/ex02/duplicateName")
+	public Map<String, String> duplicateName(
+			@RequestParam("name")String name
+			) {
+		
+		Map<String, String> map = new HashMap<>();
+		if(newUserBO.isDuplicateName(name)) {
+			return map.put("inDuplicate", "true");
+		} else {
+			return map.put("isDuplicate", "false");
+		}
+		
 	}
 }
