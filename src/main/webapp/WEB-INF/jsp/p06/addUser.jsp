@@ -71,28 +71,6 @@
 			
 			});
 			
-			$("#checkBtn").on("click",function(){
-				let name = ${"#nameInput"}.val();
-				
-				if(name == ""){
-					alert("이름을 입력해 주세요 ")
-					return ;
-					
-				}
-				
-				$.ajax({
-					type:"get",
-					url:"/p06/ex02/duplicateName",
-					data:{"name":name}
-					success:function(data){
-						if(data.isDuplicate == )
-					},
-					error:function({
-						alert("에러 발생");
-					})
-				})
-				
-			});
 			
 			
 		});

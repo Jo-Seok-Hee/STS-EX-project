@@ -17,5 +17,5 @@ public interface NewUserDAO {
 	
 	public NewUser selectNewUser(@Param("id")int id);
 	
-	public int selectCountName(@Param("name")String name);
+	
 }

@@ -26,10 +26,12 @@
 			    
 			    <input type="text" class="form-control" id="urlInput" name="url" >
 			    <div class="input-group-append">
-			        <button class="btn btn-success" type="button" onclick="checkbox()">중복확인</button>
+			        <button class="btn btn-success" type="button" id="checkUrl">중복확인</button>
 			    </div>
 			</div>
 			
+			<div id="duplicateAlarm"></div>
+			<br>
 			<button type="button" class="btn btn-primary" id="addFavorites">추가</button>
 		
 	</div>
@@ -72,6 +74,72 @@
 				return location.href = "/p06/pr01/select";
 				
 			});
+			
+			$("#checkUrl").on("click",function(){
+
+				let url = $("#urlInput").val();
+				let name = $("#nameInput").val();
+				
+				if( name == ""){
+					alert("사이트 이름을 입력하세요");
+					return ;
+				}
+				
+				if( url ==  ""){
+					alert("url을 입력하세요.");
+					return ;
+				}
+				
+				if( !(url.startsWith("http://") || url.startsWith("https://"))){
+					alert("주소형식이 틀렸습니다.");
+					return ;
+				}
+				 
+				
+				
+				$.ajax({
+					
+					//tudse
+					type:"post",
+					url:"/p06/pr01/duplicate",
+					data:{"url":url},
+					success:function(data){
+						
+						
+						if(data == "success"){
+							$("#duplicateAlarm").removeClass("text-danger");
+							$("#duplicateAlarm").html("사용 가능한 url 입니다");
+							$("#duplicateAlarm").addClass("text-primary");
+							$("#duplicateAlarm").show();
+							
+							
+						} else {
+							$("#duplicateAlarm").removeClass("text-primary");
+							$("#duplicateAlarm").html("중복된 url 입니다");
+							$("#duplicateAlarm").addClass("text-danger");
+							$("#duplicateAlarm").show();
+							
+							
+							
+						}
+						
+						
+						
+					},
+					error:function(){
+						alert("에러 발생.");
+
+					}						
+				});
+				
+				return ;
+				
+				
+				
+				
+			})
+			
+			
 			
 
 		});

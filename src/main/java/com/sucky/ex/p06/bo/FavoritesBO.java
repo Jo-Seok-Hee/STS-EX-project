@@ -21,4 +21,20 @@ public class FavoritesBO {
 	public List<Favorites> getFavorites() {
 		return favoritesDAO.selectFavorites();
 	}
+	
+	public boolean checkDuplicate(String url) {
+		int count = favoritesDAO.duplicateName(url);
+		
+		if(count == 0) {  // 웹페이지에서 받은 String name 파라미터가 db에있는 이름과 일치하는게 없음
+			return false;
+		} else {
+			return true; // 중복된 이름을 가지고있음 
+		}
+	}
+	
+	public int deleteFavorId(int id) {
+		
+		return favoritesDAO.deleteId(id);
+		
+	}
 }

@@ -58,4 +58,30 @@ public class favoritesController {
 		
 		return "/p06/favoritesResult";
 	}
+	
+	@ResponseBody
+	@PostMapping("/p06/pr01/duplicate")
+	public String pr01Duplicate(@RequestParam(value="url", required=false)String url) {
+		
+		
+		
+		if(favoritesBO.checkDuplicate(url) == false) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+	
+	@ResponseBody
+	@GetMapping("/p06/pr01/delete")
+	public String pr01Delete(@RequestParam(value="id", required=false)int id) {
+		int count = favoritesBO.deleteFavorId(id);
+		
+		if(count == 0) {
+			return "fail";
+		} else {
+			return "success";
+		}
+		
+	}
 }

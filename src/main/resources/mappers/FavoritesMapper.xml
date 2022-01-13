@@ -33,6 +33,30 @@
 	
 	
 	</select>
+	
+	<select id="duplicateName" parameterType="map" resultType="int">
+	
+		SELECT 
+			COUNT(*)
+		FROM 
+			`favorites`
+		WHERE 
+			`url` = #{url}
+	
+	
+	</select>
+	
+	<delete id="deleteId" parameterType="map">
+	
+		DELETE FROM `favorites`
+		WHERE 
+			`id` = #{id}	
+	
+	
+	
+	</delete>
+	
+	
 
 
 

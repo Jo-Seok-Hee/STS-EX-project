@@ -34,6 +34,7 @@
 					<td>${status.count }</td>
 					<td>${favorite.name }</td>
 					<td><a href="${favorite.url }">${favorite.url }</a></td>
+					<td><button type="button" class="btn btn-danger text-white deleteFavor" data-favorite-id="${favorite.id }" >삭제</button></td>
 				</tr>
 				</c:forEach>
 				<%-- 반복--%> 
@@ -45,5 +46,45 @@
 		</table>
 	
 	</div>
+	
+	<script>
+		
+	$(document).ready(function(){
+		
+		$(".deleteFavor").on("click",function(){
+			let id = $(this).data("favorite-id");
+			
+			
+			$.ajax({
+				//tudse
+				
+				type:"get",
+				url:"/p06/pr01/delete",
+				date:{"id":id},
+				success:function(data){
+					alert("삭제 성공");
+					location.reload();
+				},
+				error:function(){
+					
+				}
+				
+			});
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+	
+	
+	
+	</script>
 </body>
 </html>

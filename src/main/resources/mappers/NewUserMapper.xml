@@ -41,15 +41,5 @@
 	
 	</select>
 	
-	<select id="selectCountName" parameterType="map" resultType="int">
-	
-		SELECT 
-			count(*)
-		FROM 
-			`new_user`
-		WHERE
-			`name` = #{name}
-	
-	
-	</select>
+
 </mapper>

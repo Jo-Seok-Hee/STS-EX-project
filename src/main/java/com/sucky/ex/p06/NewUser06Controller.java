@@ -41,17 +41,5 @@ public class NewUser06Controller {
 		}
 	}
 	
-	@GetMapping("/p06/ex02/duplicateName")
-	public Map<String, String> duplicateName(
-			@RequestParam("name")String name
-			) {
-		
-		Map<String, String> map = new HashMap<>();
-		if(newUserBO.isDuplicateName(name)) {
-			return map.put("inDuplicate", "true");
-		} else {
-			return map.put("isDuplicate", "false");
-		}
-		
-	}
+	
 }

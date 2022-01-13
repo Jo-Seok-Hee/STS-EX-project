@@ -16,4 +16,8 @@ public interface FavoritesDAO {
 			);
 	
 	public List<Favorites> selectFavorites();
+	
+	public int duplicateName(@Param("url")String url);
+	
+	public int deleteId(@Param("id")int id);
 }
