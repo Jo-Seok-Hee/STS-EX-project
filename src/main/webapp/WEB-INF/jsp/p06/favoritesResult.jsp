@@ -60,7 +60,7 @@
 				
 				type:"get",
 				url:"/p06/pr01/delete",
-				date:{"id":id},
+				data:{"id":id},
 				success:function(data){
 					alert("삭제 성공");
 					location.reload();

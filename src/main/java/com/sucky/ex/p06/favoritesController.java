@@ -74,7 +74,7 @@ public class favoritesController {
 	
 	@ResponseBody
 	@GetMapping("/p06/pr01/delete")
-	public String pr01Delete(@RequestParam(value="id", required=false)int id) {
+	public String pr01Delete(@RequestParam("id")int id) {
 		int count = favoritesBO.deleteFavorId(id);
 		
 		if(count == 0) {
